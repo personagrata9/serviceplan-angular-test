@@ -1,0 +1,13 @@
+<mat-toolbar class="header">
+  <h2>Images</h2>
+  <div class="slider-container">
+    <div class="label-container">
+      <label>Few</label>
+      <label>Many</label>
+    </div>
+    <mat-slider min="5" max="25" step="1" value="5">
+      <input matSliderThumb />
+    </mat-slider>
+  </div>
+</mat-toolbar>
+<app-list [items]="items"></app-list>

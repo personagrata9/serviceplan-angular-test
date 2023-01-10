@@ -1,0 +1,17 @@
+.gallery-card {
+  flex: 1 0 auto;
+
+  img {
+    object-fit: cover;
+    height: 200px;
+  }
+
+  mat-card-title {
+    font-size: larger;
+    padding-bottom: 1rem;
+  }
+
+  mat-card-actions {
+    padding-top: 1.2rem;
+  }
+}
