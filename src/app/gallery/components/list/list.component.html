@@ -1,3 +1,4 @@
 <div class="gallery-list">
-  <app-item *ngFor="let item of items" [item]="item"> </app-item>
+  <app-card *ngFor="let item of items; trackBy: trackByFn" [item]="item">
+  </app-card>
 </div>

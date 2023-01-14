@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IItem } from '../item/item.model';
+import { IItem } from '../card/item.model';
 
 @Component({
   selector: 'app-list',
@@ -8,4 +8,8 @@ import { IItem } from '../item/item.model';
 })
 export class ListComponent {
   @Input() items!: IItem[];
+
+  public trackByFn(index: number, item: IItem) {
+    return item.id;
+  }
 }

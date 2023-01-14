@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IItem } from '../../components/item/item.model';
+import { StateService } from 'src/app/core/services/state.service';
 import { PicsumService } from '../../services/picsum.service';
+import { IItem } from '../../components/card/item.model';
 
 @Component({
   selector: 'app-main-page',
@@ -8,14 +9,31 @@ import { PicsumService } from '../../services/picsum.service';
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements OnInit {
+  public listHeightPx!: number;
   public items!: IItem[];
-  public itemsLimit = 25;
+  public itemsLimit!: number;
+  private pageNumber!: number;
+  public itemsMinIndex = 0;
+  public itemsMaxIndex!: number;
 
-  constructor(private picsumServise: PicsumService) {}
+  constructor(
+    private stateService: StateService,
+    private picsumServise: PicsumService
+  ) {}
 
   ngOnInit(): void {
-    this.picsumServise
-      .getItems(this.itemsLimit)
-      .subscribe(value => (this.items = value));
+    this.items = [];
+
+    this.stateService.itemsLimit$.subscribe(value => {
+      this.itemsLimit = value;
+      this.itemsMaxIndex = this.itemsMinIndex + this.itemsLimit;
+
+      this.fetchGalleryItems();
+    });
   }
+
+  private fetchGalleryItems = () =>
+    this.picsumServise
+      .getItems(this.pageNumber, this.itemsLimit)
+      .subscribe(value => (this.items = value));
 }

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
@@ -15,7 +15,17 @@ const MATERIAL_MODULES = [
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, HttpClientModule, ...MATERIAL_MODULES],
-  exports: [CommonModule, HttpClientModule, ...MATERIAL_MODULES],
+  imports: [
+    CommonModule,
+    NgOptimizedImage,
+    HttpClientModule,
+    ...MATERIAL_MODULES,
+  ],
+  exports: [
+    CommonModule,
+    NgOptimizedImage,
+    HttpClientModule,
+    ...MATERIAL_MODULES,
+  ],
 })
 export class SharedModule {}

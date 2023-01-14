@@ -1,0 +1,9 @@
+<div class="slider-container">
+  <div class="label-container">
+    <label>Few</label>
+    <label>Many</label>
+  </div>
+  <mat-slider min="5" max="25" step="1">
+    <input matSliderThumb [value]="itemsLimit" (input)="onInput($event)" />
+  </mat-slider>
+</div>
