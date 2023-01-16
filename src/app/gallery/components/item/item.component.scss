@@ -1,6 +1,13 @@
 :host {
   flex: content;
   align-self: stretch;
+  transition: all ease 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.02);
+    z-index: 999;
+  }
 }
 
 .gallery-card {

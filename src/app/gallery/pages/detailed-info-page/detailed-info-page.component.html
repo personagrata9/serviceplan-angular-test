@@ -1,0 +1,10 @@
+<mat-toolbar class="header">
+  <h2>{{ title }}</h2>
+  <div class="buttons-container">
+    <button mat-button>Download</button>
+    <button mat-button (click)="back()">Back</button>
+  </div>
+</mat-toolbar>
+<div class="image-container">
+  <img [src]="imageSrc" [alt]="title" />
+</div>

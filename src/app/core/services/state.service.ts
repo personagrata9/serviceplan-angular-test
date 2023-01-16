@@ -7,16 +7,15 @@ import { BehaviorSubject } from 'rxjs';
 export class StateService {
   public initialCardHeightPx!: number;
 
+  public currentPage$ = new BehaviorSubject<number>(1);
   public itemsLimit$ = new BehaviorSubject<number>(5);
-  public pageNumber$ = new BehaviorSubject<number>(1);
-  // public itemsMinIndex$ = new BehaviorSubject<number>(0);
 
   public setItemsLimit = (value: number): void => {
     this.itemsLimit$.next(value);
   };
 
-  public setPageNumber = (value: number): void => {
-    this.pageNumber$.next(value);
+  public setCurrentPage = (value: number): void => {
+    this.currentPage$.next(value);
   };
 
   public setInitialCardHeight = (value: number): void => {

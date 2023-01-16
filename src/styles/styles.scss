@@ -27,6 +27,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: $light-grey-2;
+  scroll-behavior: smooth;
 }
 
 .header {
@@ -35,7 +36,7 @@ body {
   justify-content: space-between;
   min-height: 15vh;
   background-color: $light-grey-2;
-  z-index: 1000;
+  z-index: 900;
 
   &.mat-toolbar-single-row {
     padding: 0 3rem;
