@@ -10,6 +10,7 @@ import { PicsumService } from './services/picsum.service';
 import { CardSizeDirective } from './directives/card-size.directive';
 import { DetailedInfoPageComponent } from './pages/detailed-info-page/detailed-info-page.component';
 import { DownloadImpossibleDialogComponent } from './dialogs/download-impossible-dialog/download-impossible-modal/download-impossible-dialog.component';
+import { ImageLoadingDirective } from './directives/image-loading.directive';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { DownloadImpossibleDialogComponent } from './dialogs/download-impossible
     CardSizeDirective,
     DetailedInfoPageComponent,
     DownloadImpossibleDialogComponent,
+    ImageLoadingDirective,
   ],
   imports: [CommonModule, SharedModule, GalleryRoutingModule],
   providers: [PicsumService],
