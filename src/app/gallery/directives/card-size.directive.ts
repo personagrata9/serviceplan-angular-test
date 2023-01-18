@@ -5,9 +5,9 @@ import { StateService } from 'src/app/core/services/state.service';
   selector: '[appCardSize]',
 })
 export class CardSizeDirective implements OnInit {
-  public itemsLimit!: number;
+  private itemsLimit!: number;
   private initialCardHeight = 'calc((85vh - 2rem)/ 2)';
-  public cardHeight!: string;
+  private cardHeight!: string;
 
   constructor(
     private element: ElementRef,
@@ -28,7 +28,7 @@ export class CardSizeDirective implements OnInit {
     this.element.nativeElement.style.height = this.cardHeight;
   };
 
-  private calculateCardHeight = () => {
+  private calculateCardHeight = (): void => {
     if (this.itemsLimit < 7) {
       this.cardHeight = this.initialCardHeight;
     } else if (this.itemsLimit < 15) {

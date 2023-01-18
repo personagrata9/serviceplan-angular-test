@@ -3,8 +3,8 @@ import { Subscription } from 'rxjs';
 import { StateService } from 'src/app/core/services/state.service';
 import { PicsumService } from '../../services/picsum.service';
 import { IItem } from '../../components/item/item.model';
-import { splitArrayIntoChunks } from 'src/app/helpers/split-array-into-chunks';
-import { throttleScroll } from 'src/app/helpers/throttle-scroll';
+import { splitArrayIntoChunks } from 'src/app/gallery/helpers/split-array-into-chunks';
+import { throttleScroll } from 'src/app/gallery/helpers/throttle-scroll';
 
 @Component({
   selector: 'app-main-page',
@@ -14,6 +14,7 @@ import { throttleScroll } from 'src/app/helpers/throttle-scroll';
 export class MainPageComponent implements OnInit, OnDestroy, AfterViewChecked {
   private fetchedPages!: Set<number>;
   private currentPage!: number;
+
   public itemsLimit!: number;
   public itemsMinIndex = 0;
   public itemsMaxIndex!: number;
@@ -57,7 +58,6 @@ export class MainPageComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   private updateCurrentPage = (): void => {
     const subscription = this.stateService.currentPage$.subscribe(page => {
-      console.log('upd cp', page);
       this.currentPage = page;
       this.itemsMaxIndex = this.currentPage * this.itemsLimit;
       this.itemsMinIndex = this.itemsMaxIndex - this.itemsLimit + 1;
@@ -78,12 +78,11 @@ export class MainPageComponent implements OnInit, OnDestroy, AfterViewChecked {
     const subscription = this.stateService.items$.subscribe(items => {
       this.items = items;
       this.lists = splitArrayIntoChunks(this.items, this.itemsLimit);
-      console.log('lists', this.lists);
     });
     this.subscriptions.push(subscription);
   };
 
-  private fetchItems = () => {
+  private fetchItems = (): void => {
     if (this.fetchedPages.has(this.currentPage)) {
       return;
     }
@@ -103,22 +102,18 @@ export class MainPageComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.subscriptions.push(subscription);
   };
 
-  public onScroll = () => {
-    console.log(window.scrollY, window.innerHeight);
+  public onScroll = (): void => {
     if (
       !this.isScrolled &&
       window.innerHeight + window.scrollY >= document.body.offsetHeight
     ) {
-      console.log('scroll');
       this.isScrolled = true;
       this.stateService.setCurrentPage(this.currentPage + 1);
       this.isScrolled = false;
     }
   };
 
-  private scrollToCurrentPage = () => {
-    // if (this.isScrolled) {
-    console.log('scroll to page', this.currentPage);
+  private scrollToCurrentPage = (): void => {
     const currentPageElement = document.querySelector(
       `#list-${this.currentPage}`
     );

@@ -14,8 +14,8 @@ import { StateService } from 'src/app/core/services/state.service';
   styleUrls: ['./detailed-info-page.component.scss'],
 })
 export class DetailedInfoPageComponent implements OnInit, OnDestroy {
-  public id!: string;
-  public item!: IItem | undefined;
+  private id!: string;
+  private item!: IItem | undefined;
   public title!: string;
   public imageSrc!: string;
   public filename!: string;

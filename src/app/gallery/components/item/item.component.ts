@@ -13,8 +13,6 @@ import { DownloadImpossibleDialogComponent } from '../download-impossible-dialog
   styleUrls: ['./item.component.scss'],
 })
 export class ItemComponent implements OnInit, OnDestroy {
-  public id!: string;
-
   public title!: string;
   public imageSrc!: string;
   public filename!: string;
