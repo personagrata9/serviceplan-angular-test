@@ -3,11 +3,6 @@
   align-self: stretch;
   transition: all ease 0.2s;
   cursor: pointer;
-
-  &:hover {
-    transform: scale(1.01);
-    z-index: 999;
-  }
 }
 
 .gallery-card {
@@ -15,19 +10,18 @@
 
   img {
     object-fit: cover;
-    height: calc(100% - 7rem);
+    height: calc(100% - 6rem);
     width: auto;
     opacity: 0;
     transition: all 0.2s ease;
 
-    &.visible {
+    &.loaded {
       opacity: 1;
     }
   }
 
   mat-card-header {
     height: 2.25rem;
-    padding-bottom: 1rem;
   }
 
   mat-card-actions {

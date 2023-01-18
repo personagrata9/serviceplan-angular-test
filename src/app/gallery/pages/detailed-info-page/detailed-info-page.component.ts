@@ -1,13 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IItem } from '../../components/item/item.model';
-import { selectItemById } from 'src/app/store/selectors/picsum.selectors';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { saveAs } from 'file-saver';
 import { FileSaverService } from 'src/app/core/services/file-saver.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DownloadImpossibleDialogComponent } from '../../dialogs/download-impossible-dialog/download-impossible-modal/download-impossible-dialog.component';
+import { DownloadImpossibleDialogComponent } from '../../components/download-impossible-dialog/download-impossible-dialog.component';
+import { StateService } from 'src/app/core/services/state.service';
 
 @Component({
   selector: 'app-detailed-info-page',
@@ -16,10 +15,7 @@ import { DownloadImpossibleDialogComponent } from '../../dialogs/download-imposs
 })
 export class DetailedInfoPageComponent implements OnInit, OnDestroy {
   public id!: string;
-
-  public item$!: Observable<IItem | undefined>;
   public item!: IItem | undefined;
-
   public title!: string;
   public imageSrc!: string;
   public filename!: string;
@@ -27,22 +23,16 @@ export class DetailedInfoPageComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   constructor(
-    private store: Store,
     private route: ActivatedRoute,
     private router: Router,
+    private stateService: StateService,
     private fileSaverService: FileSaverService,
     private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-
-    this.item$ = this.store.select(selectItemById(this.id));
-    const subscription = this.item$.subscribe(item => {
-      this.item = item;
-    });
-    this.subscriptions.push(subscription);
-
+    this.item = this.stateService.getItemById(this.id);
     this.title = this.item?.author || '';
     this.imageSrc = this.item?.download_url || '';
     this.filename = this.title + this.id;

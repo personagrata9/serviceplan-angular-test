@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { StoreModule } from '@ngrx/store';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
@@ -20,14 +19,12 @@ const MATERIAL_MODULES = [
   imports: [
     CommonModule,
     HttpClientModule,
-    StoreModule,
     MatDialogModule,
     ...MATERIAL_MODULES,
   ],
   exports: [
     CommonModule,
     HttpClientModule,
-    StoreModule,
     MatDialogModule,
     ...MATERIAL_MODULES,
   ],

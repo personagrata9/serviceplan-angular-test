@@ -1,0 +1,26 @@
+// :host {
+//   width: 100%;
+//   height: 100vh;
+//   overflow: scroll;
+// }
+
+// #scroll-element {
+//   width: 100%;
+//   height: 1.1rem;
+//   background-color: red;
+// }
+// .wrapper {
+//   overflow: scroll;
+// }
+
+.gallery-container {
+  width: 100%;
+  height: calc(85vh - 1rem);
+  padding-top: 15vh;
+  overflow: hidden;
+}
+
+.scroll-element {
+  width: 100%;
+  height: 1.1rem;
+}

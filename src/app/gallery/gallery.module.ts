@@ -9,7 +9,7 @@ import { SliderComponent } from './components/slider/slider.component';
 import { PicsumService } from './services/picsum.service';
 import { CardSizeDirective } from './directives/card-size.directive';
 import { DetailedInfoPageComponent } from './pages/detailed-info-page/detailed-info-page.component';
-import { DownloadImpossibleDialogComponent } from './dialogs/download-impossible-dialog/download-impossible-modal/download-impossible-dialog.component';
+import { DownloadImpossibleDialogComponent } from './components/download-impossible-dialog/download-impossible-dialog.component';
 import { ImageLoadingDirective } from './directives/image-loading.directive';
 
 @NgModule({

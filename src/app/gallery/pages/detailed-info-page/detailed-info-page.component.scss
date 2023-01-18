@@ -18,7 +18,7 @@
     opacity: 0;
     transition: all 0.2s ease;
 
-    &.visible {
+    &.loaded {
       opacity: 1;
     }
   }

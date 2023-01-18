@@ -1,5 +1,21 @@
 <mat-toolbar class="header">
-  <h2>Images {{ itemsMinIndex + 1 }} - {{ itemsMaxIndex }}</h2>
+  <h2>Images {{ itemsMinIndex }} - {{ itemsMaxIndex }}</h2>
   <app-slider></app-slider>
 </mat-toolbar>
-<app-list [items]="items"></app-list>
+<!-- <div class="wrapper" (scroll)="onScroll()"> -->
+<div class="gallery-container">
+  <app-list
+    *ngFor="let list of lists; index as i"
+    [items]="list"
+    [id]="'list-' + (i + 1)">
+  </app-list>
+</div>
+<div id="scroll-down" class="scroll-element"></div>
+<!-- </div> -->
+<!-- <app-list
+  *ngFor="let list of lists; index as i"
+  [items]="list"
+  [id]="'list-' + (i + 1)"
+  appCurrentPageView>
+</app-list>
+<div id="scroll-element" class="scroll"></div> -->

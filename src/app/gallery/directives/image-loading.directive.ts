@@ -16,7 +16,9 @@ export class ImageLoadingDirective implements OnInit {
 
   @HostListener('load')
   onLoad() {
-    this.element.nativeElement.classList.add('visible');
-    this.loadingService.setLoading(false);
+    this.element.nativeElement.classList.add('loaded');
+    setTimeout(() => {
+      this.loadingService.setLoading(false);
+    }, 1000);
   }
 }

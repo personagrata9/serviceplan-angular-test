@@ -6,7 +6,7 @@ import { StateService } from 'src/app/core/services/state.service';
 })
 export class CardSizeDirective implements OnInit {
   public itemsLimit!: number;
-  private initialCardHeight = 'calc((85vh / 2) - 1rem)';
+  private initialCardHeight = 'calc((85vh - 2rem)/ 2)';
   public cardHeight!: string;
 
   constructor(
@@ -16,9 +16,6 @@ export class CardSizeDirective implements OnInit {
 
   ngOnInit(): void {
     this.element.nativeElement.style.height = this.initialCardHeight;
-
-    this.stateService.initialCardHeightPx =
-      this.element.nativeElement.clientHeight;
 
     this.stateService.itemsLimit$.subscribe(value => {
       this.itemsLimit = value;
@@ -35,11 +32,9 @@ export class CardSizeDirective implements OnInit {
     if (this.itemsLimit < 7) {
       this.cardHeight = this.initialCardHeight;
     } else if (this.itemsLimit < 15) {
-      this.cardHeight = 'calc((85vh / 3) - 2rem)';
-    } else if (this.itemsLimit < 20) {
-      this.cardHeight = 'calc((85vh / 3.1) - 2rem)';
+      this.cardHeight = 'calc((85vh - 3rem)/ 3)';
     } else {
-      this.cardHeight = 'calc((85vh / 3.5) - 2rem)';
+      this.cardHeight = 'calc((85vh - 4rem)/ 4)';
     }
   };
 }

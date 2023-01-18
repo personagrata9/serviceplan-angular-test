@@ -28,6 +28,9 @@ export class SliderComponent implements OnInit, OnDestroy {
   public onInput = (event: Event): void => {
     const { value } = event.target as HTMLInputElement;
 
+    this.stateService.clearFetchedPage();
+    this.stateService.clearItems();
+
     this.stateService.setItemsLimit(+value);
     this.stateService.setCurrentPage(1);
   };

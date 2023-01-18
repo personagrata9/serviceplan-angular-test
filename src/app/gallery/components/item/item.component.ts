@@ -5,7 +5,7 @@ import { IItem } from './item.model';
 import { saveAs } from 'file-saver';
 import { FileSaverService } from 'src/app/core/services/file-saver.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DownloadImpossibleDialogComponent } from '../../dialogs/download-impossible-dialog/download-impossible-modal/download-impossible-dialog.component';
+import { DownloadImpossibleDialogComponent } from '../download-impossible-dialog/download-impossible-dialog.component';
 
 @Component({
   selector: 'app-item',
