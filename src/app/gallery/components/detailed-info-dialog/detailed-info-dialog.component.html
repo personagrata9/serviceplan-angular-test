@@ -1,9 +1,9 @@
 <mat-toolbar class="header">
   <h2>{{ title }}</h2>
-  <div class="buttons-container">
+  <mat-dialog-actions class="buttons-container">
     <button mat-button (click)="onDownloadClick(filename)">Download</button>
     <button mat-button (click)="onBackClick()">Back</button>
-  </div>
+  </mat-dialog-actions>
 </mat-toolbar>
 <div class="image-container">
   <img [src]="imageSrc" [alt]="title" loading="lazy" appImageLoading />

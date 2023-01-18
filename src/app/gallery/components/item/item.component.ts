@@ -4,8 +4,9 @@ import { Subscription } from 'rxjs';
 import { IItem } from './item.model';
 import { saveAs } from 'file-saver';
 import { FileSaverService } from 'src/app/core/services/file-saver.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DownloadImpossibleDialogComponent } from '../download-impossible-dialog/download-impossible-dialog.component';
+import { DetailedInfoDialogComponent } from '../detailed-info-dialog/detailed-info-dialog.component';
 
 @Component({
   selector: 'app-item',
@@ -38,12 +39,26 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   public onClick = () => {
-    this.redirectToDetailedInfoPage();
-  };
+    let dialogConfig = new MatDialogConfig();
 
-  private redirectToDetailedInfoPage = (): void => {
-    const { id } = this.item;
-    this.router.navigate(['gallery', id]);
+    dialogConfig = {
+      position: {
+        top: '0',
+        right: '0',
+        bottom: '0',
+        left: '0',
+      },
+      height: '100%',
+      width: '100vw',
+      autoFocus: false,
+      disableClose: true,
+      panelClass: 'full-screen-modal',
+      data: {
+        id: this.item.id,
+      },
+    };
+
+    this.dialog.open(DetailedInfoDialogComponent, dialogConfig);
   };
 
   public onDownloadClick = ($event: Event, filename: string): void => {

@@ -1,19 +1,23 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { IItem } from '../../components/item/item.model';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { saveAs } from 'file-saver';
 import { FileSaverService } from 'src/app/core/services/file-saver.service';
-import { MatDialog } from '@angular/material/dialog';
-import { DownloadImpossibleDialogComponent } from '../../components/download-impossible-dialog/download-impossible-dialog.component';
 import { StateService } from 'src/app/core/services/state.service';
+import { IItem } from '../item/item.model';
+import { saveAs } from 'file-saver';
+import { DownloadImpossibleDialogComponent } from '../download-impossible-dialog/download-impossible-dialog.component';
+import { IDialogData } from './dialog-data.model';
 
 @Component({
-  selector: 'app-detailed-info-page',
-  templateUrl: './detailed-info-page.component.html',
-  styleUrls: ['./detailed-info-page.component.scss'],
+  selector: 'app-detailed-info-dialog',
+  templateUrl: './detailed-info-dialog.component.html',
+  styleUrls: ['./detailed-info-dialog.component.scss'],
 })
-export class DetailedInfoPageComponent implements OnInit, OnDestroy {
+export class DetailedInfoDialogComponent implements OnInit, OnDestroy {
   private id!: string;
   private item!: IItem | undefined;
   public title!: string;
@@ -23,15 +27,16 @@ export class DetailedInfoPageComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
+    public dialogRef: MatDialogRef<DetailedInfoDialogComponent>,
     private stateService: StateService,
     private fileSaverService: FileSaverService,
-    private dialog: MatDialog
-  ) {}
+    private dialog: MatDialog,
+    @Inject(MAT_DIALOG_DATA) data: IDialogData
+  ) {
+    this.id = data.id;
+  }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
     this.item = this.stateService.getItemById(this.id);
     this.title = this.item?.author || '';
     this.imageSrc = this.item?.download_url || '';
@@ -43,7 +48,7 @@ export class DetailedInfoPageComponent implements OnInit, OnDestroy {
   }
 
   public onBackClick(): void {
-    this.router.navigate(['..']);
+    this.dialogRef.close();
   }
 
   public onDownloadClick = (filename: string): void => {

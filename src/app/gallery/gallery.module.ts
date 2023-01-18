@@ -8,9 +8,10 @@ import { ListComponent } from './components/list/list.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { PicsumService } from './services/picsum.service';
 import { CardSizeDirective } from './directives/card-size.directive';
-import { DetailedInfoPageComponent } from './pages/detailed-info-page/detailed-info-page.component';
 import { DownloadImpossibleDialogComponent } from './components/download-impossible-dialog/download-impossible-dialog.component';
 import { ImageLoadingDirective } from './directives/image-loading.directive';
+import { DetailedInfoDialogComponent } from './components/detailed-info-dialog/detailed-info-dialog.component';
+import { ScrollingDirective } from './directives/scrolling.directive';
 
 @NgModule({
   declarations: [
@@ -18,10 +19,11 @@ import { ImageLoadingDirective } from './directives/image-loading.directive';
     ItemComponent,
     ListComponent,
     SliderComponent,
-    CardSizeDirective,
-    DetailedInfoPageComponent,
     DownloadImpossibleDialogComponent,
+    DetailedInfoDialogComponent,
+    CardSizeDirective,
     ImageLoadingDirective,
+    ScrollingDirective,
   ],
   imports: [CommonModule, SharedModule, GalleryRoutingModule],
   providers: [PicsumService],

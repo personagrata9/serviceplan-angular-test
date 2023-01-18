@@ -1,17 +1,17 @@
-import { AfterViewChecked, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { StateService } from 'src/app/core/services/state.service';
 import { PicsumService } from '../../services/picsum.service';
 import { IItem } from '../../components/item/item.model';
-import { splitArrayIntoChunks } from 'src/app/gallery/helpers/split-array-into-chunks';
-import { throttleScroll } from 'src/app/gallery/helpers/throttle-scroll';
+import { splitArrayIntoChunks } from 'src/app/helpers/split-array-into-chunks';
+import { throttleScroll } from 'src/app/helpers/throttle-scroll';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
 })
-export class MainPageComponent implements OnInit, OnDestroy, AfterViewChecked {
+export class MainPageComponent implements OnInit, OnDestroy {
   private fetchedPages!: Set<number>;
   private currentPage!: number;
 
@@ -39,10 +39,6 @@ export class MainPageComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.updateCurrentPage();
 
     window.addEventListener('scroll', throttleScroll(this.onScroll, 2000));
-  }
-
-  ngAfterViewChecked(): void {
-    this.scrollToCurrentPage();
   }
 
   ngOnDestroy(): void {
@@ -111,12 +107,5 @@ export class MainPageComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.stateService.setCurrentPage(this.currentPage + 1);
       this.isScrolled = false;
     }
-  };
-
-  private scrollToCurrentPage = (): void => {
-    const currentPageElement = document.querySelector(
-      `#list-${this.currentPage}`
-    );
-    currentPageElement?.scrollIntoView(false);
   };
 }

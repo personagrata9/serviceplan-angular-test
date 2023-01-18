@@ -2,7 +2,7 @@
   <h2>Images {{ itemsMinIndex }} - {{ itemsMaxIndex }}</h2>
   <app-slider></app-slider>
 </mat-toolbar>
-<div class="gallery-container">
+<div class="gallery-container" appScrolling>
   <app-list
     *ngFor="let list of lists; index as i"
     [items]="list"
