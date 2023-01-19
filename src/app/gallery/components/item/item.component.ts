@@ -53,6 +53,8 @@ export class ItemComponent implements OnInit, OnDestroy {
       autoFocus: false,
       disableClose: true,
       panelClass: 'full-screen-modal',
+      enterAnimationDuration: 500,
+      exitAnimationDuration: 500,
       data: {
         id: this.item.id,
       },
