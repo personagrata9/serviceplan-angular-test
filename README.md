@@ -1,5 +1,10 @@
 # ServiceplanAngularTest
 
+## General description of the app:
+
+- The app is a gallery view of images where the users can also see each image in detail
+- The images can also be download if they have a specific resolution ( both width and height are higher than 2000px)
+
 ## Deploy link:
 
 https://serviceplan-angular-test.netlify.app
