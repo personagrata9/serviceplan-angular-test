@@ -1,0 +1,16 @@
+<mat-card class="gallery-card" appCardSize (click)="onClick()">
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+  </mat-card-header>
+  <img
+    mat-card-image
+    [src]="imageSrc"
+    [alt]="title"
+    loading="lazy"
+    appImageLoading />
+  <mat-card-actions>
+    <button mat-button (click)="onDownloadClick($event, filename)">
+      Download
+    </button>
+  </mat-card-actions>
+</mat-card>

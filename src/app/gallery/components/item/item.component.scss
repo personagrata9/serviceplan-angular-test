@@ -1,0 +1,35 @@
+:host {
+  flex: content;
+  align-self: stretch;
+  transition: all ease 0.2s;
+  cursor: pointer;
+}
+
+.gallery-card {
+  height: inherit;
+
+  img {
+    object-fit: cover;
+    height: calc(100% - 6rem);
+    width: auto;
+    opacity: 0;
+    transition: all 0.2s ease;
+
+    &.loaded {
+      opacity: 1;
+    }
+  }
+
+  mat-card-header {
+    height: 2.25rem;
+  }
+
+  mat-card-actions {
+    height: 1.75rem;
+    padding: 1rem 0.5rem 0.5rem;
+
+    button {
+      font-size: 0.6rem;
+    }
+  }
+}

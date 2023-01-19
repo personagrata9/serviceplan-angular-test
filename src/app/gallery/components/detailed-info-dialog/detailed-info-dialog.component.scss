@@ -1,0 +1,29 @@
+@import '../../../../styles/variables.scss';
+
+.buttons-container{
+  display: flex;
+  gap: 1rem;
+}
+
+.image-container {
+  position: fixed;
+  width: 100vw;
+  height: 80vh;
+  padding-top: 15vh;
+  padding-bottom: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $light-grey-2;
+
+  img {
+    max-width: 100%;
+    max-height: 80vh;
+    opacity: 0;
+    transition: all 0.2s ease;
+
+    &.loaded {
+      opacity: 1;
+    }
+  }
+}
